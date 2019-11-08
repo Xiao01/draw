@@ -7,6 +7,15 @@ Page({
     touchHandler: function (e) {
         console.log(radarChart.getCurrentDataIndex(e));
     },
+  updateData: function () {
+    radarChart.updateData({
+      categories: ['1', '2', '3', '4', '5'],
+      series: [{
+        name: '成交量2',
+        data: [870, 125, 950, 287, 1202]
+      }],
+    });
+  },
     onReady: function (e) {
         var windowWidth = 320;
         try {

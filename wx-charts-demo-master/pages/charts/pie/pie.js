@@ -6,38 +6,31 @@ Page({
   touchHandler: function(e) {
     console.log(pieChart.getCurrentDataIndex(e));
   },
-  createSimulationData: function() {
-   
-    var data = [];
-    var name=[];
-    for (var i = 0; i < 10; i++) {
-      num = Math.random() * 100
-      num = num.toFixed(1)
-      data.push(num);
-      name.push("成交量"+(i+1)+": "+data[i])
-    }
-    return {
-      data: data,
-      name:name
-    }
-  },
+
   updateData: function() {
-    var simulationData = this.createSimulationData();
-    var series =[]
-    for (var i = 0; i < 10; i++){
-     var  series_ ={ 
-       name: simulationData.name[i],
-       data: simulationData.data[i],
-     }
-      console.log("series_: " + series_)
-      series.push(series_)
-    }
-   
+    console.log('update')
+    const data_ = [3,6,8,9,12]
+    console.log(data_)
     pieChart.updateData({
-      series: series
+      series: [{
+        name: '成交量1',
+        data: data_[0],
+      }, {
+        name: '成交量2',
+          data: data_[1],
+      }, {
+        name: '成交量3',
+          data: data_[2],
+      }, {
+        name: '成交量4',
+          data: data_[3],
+      }, {
+        name: '成交量5',
+          data: data_[4],
+      }],
     });
   },
-  onLoad: function(e) {
+  onReady: function(e) {
     var windowWidth = 320;
     try {
       var res = wx.getSystemInfoSync();
@@ -59,27 +52,6 @@ Page({
       }, {
         name: '成交量3',
         data: 15,
-      }, {
-        name: '成交量4',
-        data: 20,
-      }, {
-        name: '成交量2',
-        data: 25,
-      }, {
-        name: '成交量3',
-        data: 30,
-      }, {
-        name: '成交量4',
-        data: 35,
-      }, {
-        name: '成交量2',
-        data: 40,
-      }, {
-        name: '成交量3',
-        data: 45,
-      }, {
-        name: '成交量3',
-        data: 50,
       }],
       width: windowWidth,
       height: 300,

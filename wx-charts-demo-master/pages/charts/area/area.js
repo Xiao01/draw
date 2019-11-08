@@ -7,7 +7,22 @@ Page({
     touchHandler: function (e) {
         console.log(areaChart.getCurrentDataIndex(e));
         areaChart.showToolTip(e);
-    },    
+    },   
+  updateData: function () {
+    console.log('update')
+    const data_ = [3, 6, 8, 9, 12]
+    console.log(data_)
+    areaChart.updateData({
+      categories: ['7', '8', '9', '10', '11', '12'],
+      series: [{
+        name: '成交量2',
+        data: [3, 5, 12, 8, 9, 17],
+        format: function (val) {
+          return val.toFixed(2) + '万';
+        }
+      }],
+    });
+  }, 
     onLoad: function (e) {
         var windowWidth = 320;
         try {
